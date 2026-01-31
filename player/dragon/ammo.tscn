@@ -1,24 +1,60 @@
 [gd_scene format=3 uid="uid://dp56hgjxcdhmc"]
 
 [ext_resource type="Script" uid="uid://br0fihqq280o4" path="res://player/dragon/ammo.gd" id="1_pq0a6"]
+[ext_resource type="Texture2D" uid="uid://vuoarya6xtri" path="res://player/dragon/dragon_bullet.png" id="2_gqtg0"]
 [ext_resource type="Script" uid="uid://d4ipkk1w7rjan" path="res://hitbox/hitbox_enter.gd" id="2_nwbqj"]
 
-[sub_resource type="Gradient" id="Gradient_nwbqj"]
-offsets = PackedFloat32Array(0, 0.47477064, 1)
-colors = PackedColorArray(0.86686695, 0.0005346364, 0.8540185, 1, 1, 0, 0, 0.8156863, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_gqtg0"]
-gradient = SubResource("Gradient_nwbqj")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.5, 0)
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_rnfoh"]
-radius = 31.016125
+radius = 14.035668
 
-[node name="Ammo" type="Sprite2D" unique_id=1085639906]
-texture = SubResource("GradientTexture2D_gqtg0")
+[sub_resource type="Animation" id="Animation_gqtg0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_nwbqj"]
+resource_name = "idle"
+length = 0.25
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gqtg0"]
+_data = {
+&"RESET": SubResource("Animation_gqtg0"),
+&"idle": SubResource("Animation_nwbqj")
+}
+
+[node name="Ammo" type="Node2D" unique_id=638669062]
 script = ExtResource("1_pq0a6")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1122914191]
+position = Vector2(-36, 0)
+rotation = 1.5707964
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_gqtg0")
+hframes = 5
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=648588888]
 collision_layer = 0
@@ -32,6 +68,10 @@ shape = SubResource("CircleShape2D_rnfoh")
 wait_time = 3.0
 one_shot = true
 autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=654067154]
+libraries/ = SubResource("AnimationLibrary_gqtg0")
+autoplay = &"idle"
 
 [connection signal="area_entered" from="Hitbox" to="." method="on_hit_target"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

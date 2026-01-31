@@ -35,3 +35,16 @@ res://enemy/environment/trunk.tscn
 res://enemy/environment/stone.tscn
 res://player/wolf/wolf.tscn
 res://mask/wolf.tscn
+res://player/dragon/dragon.gd
+res://ui/fail/fail.tscn
+res://util/global.tscn
+res://sound/sfx/sfx.tscn
+res://sound/sfx/sfx.gd
+res://ui/fail/fail.gd
+res://enemy/enemy.tscn
+res://enemy/enemy.gd
+res://enetity.gd
+res://enemy/clawn_common/clawn_common.tscn
+res://enemy/clawn_common/clawn_common.gd
+res://player/monkey/monkey.gd
+res://player/wolf/wolf.gd

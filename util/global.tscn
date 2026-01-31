@@ -4,3 +4,11 @@
 
 [node name="Global" type="Node" unique_id=1592680412]
 script = ExtResource("1_fl6xk")
+
+[node name="Bgm" type="AudioStreamPlayer" parent="." unique_id=1286840963]
+unique_name_in_owner = true
+
+[node name="Sfx" type="Node" parent="." unique_id=1185500353]
+unique_name_in_owner = true
+
+[connection signal="finished" from="Bgm" to="." method="_on_bgm_finished"]

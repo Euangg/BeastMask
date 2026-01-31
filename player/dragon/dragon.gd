@@ -1,4 +1,6 @@
 extends Entity
+const SFX_DRAGON_ATK_1 = ("uid://bkcsrb1ysmjj")
+const SFX_DRAGON_ATK_2 = ("uid://boakk5vcp6d3d")
 
 enum State{NULL,
 	IDLE,ATK_1,ATK_2,HURT,DIE
@@ -6,6 +8,7 @@ enum State{NULL,
 var current_state:State=State.NULL
 var speed=600
 const AMMO = preload("uid://dp56hgjxcdhmc")
+
 
 func _physics_process(delta: float) -> void:
 	#var is_jump_pressed=Input.is_action_just_pressed("space")
@@ -46,14 +49,19 @@ func _physics_process(delta: float) -> void:
 				%Hitbox.hurtboxes.clear()
 				%Hitbox.set_deferred("monitoring",true)
 				%GPUParticles2D.restart()
+				Global.play_sfx(SFX_DRAGON_ATK_1)
 			State.ATK_2:
 				%AnimationPlayer.play("atk")
 				var a=AMMO.instantiate()
-				a.position=position
-				a.velocity.x=direction*700
+				a.scale.x=direction
+				a.position=%Marker2D.global_position
+				a.velocity.x=direction*900
 				add_sibling(a)
+				Global.play_sfx(SFX_DRAGON_ATK_2)
 			State.HURT:%AnimationPlayer.play("hurt")
-			State.DIE:%AnimationPlayer.play("die")
+			State.DIE:
+				%AnimationPlayer.play("die")
+				Global.play_sfx(Global.SFX_PLAYER_DEAD)
 		current_state=next_state
 	#3/3.状态运行
 	match current_state:
@@ -68,6 +76,7 @@ func judge_state_try_enter_hurt(state:State)->State:
 		state=State.HURT
 		hp-=%Hurtbox.damage
 		print(hp)
+		Global.play_sfx(Global.SFX_PLAYER_HURT)
 	is_hurted=false
 	%Hurtbox.damage=0
 	return state

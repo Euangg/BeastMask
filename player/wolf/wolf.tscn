@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://d4ipkk1w7rjan" path="res://hitbox/hitbox_enter.gd" id="3_1sywn"]
 [ext_resource type="Script" uid="uid://b5nu2xryxfo4m" path="res://hitbox/hitbox_oneshot.gd" id="4_mynbp"]
 [ext_resource type="Script" uid="uid://ca4ihn4jasw5t" path="res://hurtbox/hurtbox.gd" id="5_wfqp7"]
+[ext_resource type="AudioStream" uid="uid://1i38r234kdns" path="res://sound/sfx/walk.wav" id="6_4b0oy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oahmb"]
 size = Vector2(110, 78)
@@ -128,6 +129,20 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"sig_dead"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_mc37p"]
@@ -341,5 +356,10 @@ unique_name_in_owner = true
 wait_time = 0.4
 one_shot = true
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=675948016]
+unique_name_in_owner = true
+stream = ExtResource("6_4b0oy")
+
 [connection signal="get_damage" from="Graphic/Hurtbox" to="." method="_on_hurtbox_get_damage"]
 [connection signal="timeout" from="TimerInvincible" to="." method="_on_timer_invincible_timeout"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

@@ -45,4 +45,17 @@ offset_bottom = 211.0
 theme_override_font_sizes/font_size = 160
 text = "野兽面具"
 
+[node name="Label2" type="Label" parent="." unique_id=592605715]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -56.0
+offset_right = 500.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 50
+text = "V0.4"
+vertical_alignment = 2
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

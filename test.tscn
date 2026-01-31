@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://drkic68uysqbe" path="res://test.gd" id="1_g14j6"]
 [ext_resource type="PackedScene" uid="uid://0w48jlqovaqf" path="res://level/prefab/event_enemy.tscn" id="3_ppyta"]
 [ext_resource type="PackedScene" uid="uid://ciar6x6412wcf" path="res://enemy/environment/trunk.tscn" id="3_ykrsh"]
-[ext_resource type="PackedScene" uid="uid://qsbc2kitpjnm" path="res://player/bear/bear.tscn" id="4_ppyta"]
 [ext_resource type="PackedScene" uid="uid://6qiv5d0ni4o0" path="res://player/wolf/wolf.tscn" id="5_ykrsh"]
+[ext_resource type="PackedScene" uid="uid://dmyh7ah4pxn73" path="res://enemy/clawn_common/clawn_common.tscn" id="6_g14j6"]
 [ext_resource type="PackedScene" uid="uid://82bor0jg8kki" path="res://level/prefab/point_enemy.tscn" id="7_vbegm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_37kl0"]
@@ -59,9 +59,15 @@ shape = SubResource("RectangleShape2D_ykrsh")
 
 [node name="Wolf" parent="." unique_id=308110839 instance=ExtResource("5_ykrsh")]
 unique_name_in_owner = true
-position = Vector2(24, 263)
+position = Vector2(155, 241)
 
-[node name="Bear" parent="." unique_id=543141566 instance=ExtResource("4_ppyta")]
-position = Vector2(91, 317)
+[node name="ClawnCommon" parent="." unique_id=1629721795 instance=ExtResource("6_g14j6")]
+unique_name_in_owner = true
+position = Vector2(878, -24)
+hp = 25.0
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=181520317]
+unique_name_in_owner = true
+position = Vector2(465, 142)
 
 [editable path="EventEnemy"]

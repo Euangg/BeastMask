@@ -1,6 +1,8 @@
 class_name Entity
 extends CharacterBody2D
 
+signal dead
+
 enum Direction{LEFT=-1,RIGHT=1}
 @export var direction:Direction=Direction.RIGHT:
 	set(v):
@@ -14,3 +16,6 @@ var is_hurted:bool=false
 var direction_hurt:Direction
 
 @export var hp:float=100
+
+
+func sig_dead():dead.emit()

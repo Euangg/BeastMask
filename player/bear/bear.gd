@@ -1,4 +1,7 @@
 extends Entity
+const SFX_BEAR_ATK_1 = ("uid://dpfxu8v6rvle8")
+const SFX_BEAR_ATK_2 = ("uid://cv1hwpekhjce5")
+
 
 enum State{NULL,
 	IDLE,RUN,RISE,FALL,ATK_1,ATK_2,HURT,DIE
@@ -63,30 +66,36 @@ func _physics_process(delta: float) -> void:
 	else:
 		match current_state:
 			State.IDLE:pass
-			State.RUN:pass
+			State.RUN:%AudioStreamPlayer.stop()
 			State.RISE:pass
 			State.FALL:pass
 			State.ATK_1:%Hitbox1.set_deferred("monitoring",false)
 			State.ATK_2:%Hitbox2.set_deferred("monitoring",false)
 		match next_state:
 			State.IDLE:%AnimationPlayer.play("idle")
-			State.RUN:%AnimationPlayer.play("run")
+			State.RUN:
+				%AnimationPlayer.play("run")
+				%AudioStreamPlayer.play()
 			State.RISE:%AnimationPlayer.play("rise")
 			State.FALL:%AnimationPlayer.play("fall")
 			State.ATK_1:
 				%AnimationPlayer.play("atk_1")
 				velocity.y=-1500
 				%Hitbox1.set_deferred("monitoring",true)
+				Global.play_sfx(SFX_BEAR_ATK_1)
 			State.ATK_2:
 				%AnimationPlayer.play("atk_2")
 				%Hitbox2.hurtboxes.clear()
 				%Hitbox2.set_deferred("monitoring",true)
 				%GPUParticles2D.restart()
+				Global.play_sfx(SFX_BEAR_ATK_2)
 			State.HURT:
 				%AnimationPlayer.play("hurt")
 				%TimerInvincible.start()
 				%Graphic.modulate.a=0.5
-			State.DIE:%AnimationPlayer.play("die")
+			State.DIE:
+				%AnimationPlayer.play("die")
+				Global.play_sfx(Global.SFX_PLAYER_DEAD)
 		current_state=next_state
 	#3/3.状态运行
 	match current_state:
@@ -112,7 +121,9 @@ func _physics_process(delta: float) -> void:
 	velocity.y+=4000*delta
 	move_and_slide()
 
-func jump():velocity.y=-1500
+func jump():
+	velocity.y=-1500
+	Global.play_sfx(Global.SFX_JUMP.pick_random())
 
 func _on_hurtbox_get_damage() -> void:is_hurted=true
 
@@ -121,8 +132,12 @@ func judge_state_try_enter_hurt(state:State)->State:
 		state=State.HURT
 		hp-=%Hurtbox.damage
 		print(hp)
+		Global.play_sfx(Global.SFX_PLAYER_HURT)
 	is_hurted=false
 	%Hurtbox.damage=0
 	return state
 
 func _on_timer_invincible_timeout() -> void:%Graphic.modulate.a=1
+
+
+func _on_audio_stream_player_finished() -> void:%AudioStreamPlayer.play()

@@ -32,15 +32,23 @@ func switch_player(str_player:String):
 	if player:
 		old_position=player.position
 		player.queue_free()
-	var new_player=dict_player[str_player].instantiate()
+	var new_player:Entity=dict_player[str_player].instantiate()
 	%Node2DPlayer.add_child(new_player)
 	new_player.position=old_position
+	new_player.dead.connect(game_fail)
 	player=new_player
 	Global.player=player
+	match str_player:
+		"dragon":Global.play_sfx([Global.SFX_TRANSFORM_DRAGON_1,Global.SFX_TRANSFORM_DRAGON_2].pick_random())
+		"bear":Global.play_sfx(Global.SFX_TRANSFORM_BEAR)
+		"wolf":Global.play_sfx([Global.SFX_TRANSFORM_WOLF_1,Global.SFX_TRANSFORM_WOLF_2].pick_random())
+	
 
 func _ready() -> void:
 	player=%Player
+	player.dead.connect(game_fail)
 	Global.player=%Player
+	Global.play_bgm(Global.BGM)
 	switch_level("level_1")
 
 func _process(delta: float) -> void:
@@ -49,3 +57,4 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("j"):switch_player("dragon")
 	
+func game_fail():Global.switch_scene(Global.UI_FAIL)
