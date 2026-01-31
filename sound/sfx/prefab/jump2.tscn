@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://ul8gi3vtjhpd"]
+
+[ext_resource type="PackedScene" uid="uid://betxa8n7jvl5g" path="res://sound/sfx/sfx.tscn" id="1_3knpy"]
+[ext_resource type="AudioStream" uid="uid://ge0qnlue05ti" path="res://sound/sfx/prefab/jump_2.wav" id="2_3knpy"]
+
+[node name="Jump" unique_id=1663215250 instance=ExtResource("1_3knpy")]
+stream = ExtResource("2_3knpy")
+volume_db = 2.0

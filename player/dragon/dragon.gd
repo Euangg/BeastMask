@@ -6,7 +6,7 @@ enum State{NULL,
 	IDLE,ATK_1,ATK_2,HURT,DIE
 }
 var current_state:State=State.NULL
-var speed=600
+@export var speed=450
 const AMMO = preload("uid://dp56hgjxcdhmc")
 
 

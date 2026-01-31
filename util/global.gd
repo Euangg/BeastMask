@@ -25,13 +25,15 @@ const SFX_PLAYER_HURT = ("uid://d2gxuy3ckswhf")
 const SFX_PASS = ("uid://j6qvwupn06pl")
 const SFX_FAIL = ("uid://bqgsx74o2qho1")
 
-var SFX_JUMP=[("uid://rk7ii5c5p6ag"),("uid://ge0qnlue05ti"),("uid://cq5mvtt3j27gt"),("uid://sc4o0rf58p20")]
-
 const SFX = preload("uid://betxa8n7jvl5g")
 func play_sfx(sfx:String):
 	var s:Sfx=SFX.instantiate()
 	s.stream=load(sfx)
 	%Sfx.add_child(s)
+	
+var SFX_JUMP:Array=[preload("uid://c713eywbbjwby"),preload("uid://ul8gi3vtjhpd"),
+	preload("uid://c255h3773ob8h"),preload("uid://ddtgjio2ckt6j")]
+func play_sfx_packed(sfx:PackedScene):%Sfx.add_child(sfx.instantiate())
 
 enum EnumEnemy{
 	STONE,

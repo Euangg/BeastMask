@@ -54,7 +54,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if player:camera_2d.position=player.position
 
-func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("j"):switch_player("dragon")
+func _physics_process(delta: float) -> void:pass
 	
 func game_fail():Global.switch_scene(Global.UI_FAIL)

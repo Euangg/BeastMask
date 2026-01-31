@@ -1,18 +1,18 @@
 [gd_scene format=3 uid="uid://cnrd6ves3ilva"]
 
 [ext_resource type="Script" uid="uid://du2wmnffu0cce" path="res://enemy/zombie/zombie.gd" id="1_fo461"]
-[ext_resource type="Texture2D" uid="uid://cpju3rhuvnu6d" path="res://player/monkey/monkey.png" id="2_32ick"]
+[ext_resource type="Texture2D" uid="uid://btd05p03fv606" path="res://enemy/zombie/zombie.png" id="2_5r16j"]
 [ext_resource type="Script" uid="uid://d4ipkk1w7rjan" path="res://hitbox/hitbox_enter.gd" id="3_5r16j"]
 [ext_resource type="Script" uid="uid://ca4ihn4jasw5t" path="res://hurtbox/hurtbox.gd" id="4_a85bv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ljwmj"]
-size = Vector2(20, 69)
+size = Vector2(32, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i2j0x"]
-size = Vector2(38, 78)
+size = Vector2(38, 50)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6dvuw"]
-size = Vector2(24, 72)
+size = Vector2(30, 46)
 
 [sub_resource type="Animation" id="Animation_a85bv"]
 length = 0.001
@@ -39,6 +39,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Graphic/Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_32ick"]
@@ -89,6 +101,21 @@ resource_name = "idle"
 
 [sub_resource type="Animation" id="Animation_5r16j"]
 resource_name = "walk"
+length = 0.2
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphic/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999994),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a85bv"]
 _data = {
@@ -146,8 +173,9 @@ unique_name_in_owner = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Graphic" unique_id=226926205]
 position = Vector2(0, -40)
-texture = ExtResource("2_32ick")
-region_enabled = true
+texture = ExtResource("2_5r16j")
+flip_h = true
+hframes = 2
 region_rect = Rect2(39, 21, 42, 79)
 
 [node name="Hitbox" type="Area2D" parent="Graphic" unique_id=1479179579]
@@ -157,7 +185,7 @@ collision_mask = 16
 script = ExtResource("3_5r16j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Graphic/Hitbox" unique_id=1604968182]
-position = Vector2(0, -35.5)
+position = Vector2(0, -25)
 shape = SubResource("RectangleShape2D_ljwmj")
 
 [node name="Hurtbox" type="Area2D" parent="Graphic" unique_id=1492377777]
@@ -168,11 +196,11 @@ monitoring = false
 script = ExtResource("4_a85bv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Graphic/Hurtbox" unique_id=80999187]
-position = Vector2(0, -39)
+position = Vector2(0, -25)
 shape = SubResource("RectangleShape2D_i2j0x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1399878688]
-position = Vector2(0, -37)
+position = Vector2(0, -24)
 shape = SubResource("RectangleShape2D_6dvuw")
 
 [node name="Timer" type="Timer" parent="." unique_id=462172906]

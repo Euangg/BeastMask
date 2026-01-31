@@ -4,7 +4,8 @@ enum State{NULL,
 	IDLE,RUN,RISE,FALL,ATK,HURT,DIE
 }
 var current_state:State=State.NULL
-var speed=400
+@export var speed=350
+@export var ability_jump=1300
 
 func _physics_process(delta: float) -> void:
 	var is_jump_pressed=Input.is_action_just_pressed("space")
@@ -107,8 +108,8 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func jump():
-	velocity.y=-1500
-	Global.play_sfx(Global.SFX_JUMP.pick_random())
+	velocity.y=-ability_jump
+	Global.play_sfx_packed(Global.SFX_JUMP.pick_random())
 
 func _on_hurtbox_get_damage() -> void:is_hurted=true
 

@@ -7,6 +7,7 @@ script = ExtResource("1_fl6xk")
 
 [node name="Bgm" type="AudioStreamPlayer" parent="." unique_id=1286840963]
 unique_name_in_owner = true
+bus = &"Bgm"
 
 [node name="Sfx" type="Node" parent="." unique_id=1185500353]
 unique_name_in_owner = true
