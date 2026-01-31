@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://cp7qtitcteb3r"]
+
+[ext_resource type="PackedScene" uid="uid://f6yjjjckgan3" path="res://level/level.tscn" id="1_cirmq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cirmq"]
+size = Vector2(1129, 109)
+
+[node name="Level2" unique_id=2042567388 instance=ExtResource("1_cirmq")]
+
+[node name="Marker2D" type="Marker2D" parent="NodeEnterPoint" parent_id_path=PackedInt32Array(1359246733) index="0" unique_id=881271317]
+position = Vector2(729, 335)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." index="2" unique_id=1014946369]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0" unique_id=302838726]
+position = Vector2(434, 470)
+shape = SubResource("RectangleShape2D_cirmq")
+
+[node name="ColorRect" type="ColorRect" parent="." index="3" unique_id=89475630]
+offset_left = -50.0
+offset_top = 426.0
+offset_right = 875.0
+offset_bottom = 556.0
+color = Color(1, 0, 1, 1)

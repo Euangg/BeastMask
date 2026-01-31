@@ -1,0 +1,14 @@
+AnimationPlayer
+Label
+Button
+ColorRect
+Marker2D
+Camera2D
+Node
+Area2D
+Node2D
+CollisionShape2D
+Timer
+CharacterBody2D
+CollisionPolygon2D
+Sprite2D

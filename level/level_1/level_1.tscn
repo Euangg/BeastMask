@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://do05lhdu1wb7n"]
+
+[ext_resource type="PackedScene" uid="uid://f6yjjjckgan3" path="res://level/level.tscn" id="1_s2urf"]
+[ext_resource type="PackedScene" uid="uid://ciar6x6412wcf" path="res://enemy/enemy_stone/enemy_stone.tscn" id="2_b8haq"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_s2urf"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_b8haq"]
+normal = Vector2(1, 0)
+distance = -83.739975
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_e32pu"]
+normal = Vector2(-1, 0)
+distance = -83.739975
+
+[node name="Level" unique_id=2042567388 instance=ExtResource("1_s2urf")]
+
+[node name="Marker2D" type="Marker2D" parent="NodeEnterPoint" parent_id_path=PackedInt32Array(1359246733) index="0" unique_id=831734122]
+position = Vector2(75, 355)
+
+[node name="RB" parent="NodeCameraRange" parent_id_path=PackedInt32Array(1095783540) index="1" unique_id=1855086809]
+position = Vector2(9351, 449)
+
+[node name="ColorRect" type="ColorRect" parent="." index="2" unique_id=1018386032]
+offset_left = -92.0
+offset_top = 417.0
+offset_right = 9351.0
+offset_bottom = 547.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." index="3" unique_id=1905761300]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0" unique_id=984725739]
+position = Vector2(76, 419)
+shape = SubResource("WorldBoundaryShape2D_s2urf")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" index="1" unique_id=1653750447]
+position = Vector2(82, 343)
+shape = SubResource("WorldBoundaryShape2D_b8haq")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" index="2" unique_id=1792400420]
+position = Vector2(9269, 72)
+shape = SubResource("WorldBoundaryShape2D_e32pu")
+
+[node name="Node2DEnemy" type="Node2D" parent="." index="4" unique_id=639140546]
+
+[node name="EnemyStone" parent="Node2DEnemy" index="0" unique_id=1404550148 instance=ExtResource("2_b8haq")]
+position = Vector2(326, 347)
+
+[node name="EnemyStone2" parent="Node2DEnemy" index="1" unique_id=1163576320 instance=ExtResource("2_b8haq")]
+position = Vector2(559, 347)
+
+[node name="EnemyStone3" parent="Node2DEnemy" index="2" unique_id=70774119 instance=ExtResource("2_b8haq")]
+position = Vector2(665, 347)
+
+[node name="EnemyStone4" parent="Node2DEnemy" index="3" unique_id=548316145 instance=ExtResource("2_b8haq")]
+position = Vector2(771, 347)
+
+[node name="EnemyStone5" parent="Node2DEnemy" index="4" unique_id=771849275 instance=ExtResource("2_b8haq")]
+position = Vector2(1042, 343)
+
+[node name="EnemyStone6" parent="Node2DEnemy" index="5" unique_id=1214102316 instance=ExtResource("2_b8haq")]
+position = Vector2(2357, 343)
+
+[node name="EnemyStone7" parent="Node2DEnemy" index="6" unique_id=1755707346 instance=ExtResource("2_b8haq")]
+position = Vector2(3682, 343)
+
+[node name="EnemyStone8" parent="Node2DEnemy" index="7" unique_id=1965278316 instance=ExtResource("2_b8haq")]
+position = Vector2(4898, 343)
+
+[node name="EnemyStone9" parent="Node2DEnemy" index="8" unique_id=554032699 instance=ExtResource("2_b8haq")]
+position = Vector2(5544, 343)
+
+[node name="EnemyStone10" parent="Node2DEnemy" index="9" unique_id=896933521 instance=ExtResource("2_b8haq")]
+position = Vector2(5658, 343)
+
+[node name="EnemyStone11" parent="Node2DEnemy" index="10" unique_id=1432633540 instance=ExtResource("2_b8haq")]
+position = Vector2(6587, 343)
+
+[node name="EnemyStone12" parent="Node2DEnemy" index="11" unique_id=1552543830 instance=ExtResource("2_b8haq")]
+position = Vector2(7809, 343)
+
+[node name="EnemyStone13" parent="Node2DEnemy" index="12" unique_id=1780924155 instance=ExtResource("2_b8haq")]
+position = Vector2(9212, 343)
+
+[node name="EnemyStone14" parent="Node2DEnemy" index="13" unique_id=326926226 instance=ExtResource("2_b8haq")]
+position = Vector2(9115, 343)
+
+[node name="EnemyStone15" parent="Node2DEnemy" index="14" unique_id=2035347540 instance=ExtResource("2_b8haq")]
+position = Vector2(9313, 343)
+
+[connection signal="dead" from="Node2DEnemy/EnemyStone15" to="." method="_on_enemy_stone_15_dead"]

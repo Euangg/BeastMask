@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://ciar6x6412wcf"]
+
+[ext_resource type="Script" uid="uid://bwbnfe23mgn1u" path="res://enemy/enemy_stone/enemy_stone.gd" id="1_ygd4e"]
+[ext_resource type="Texture2D" uid="uid://cpju3rhuvnu6d" path="res://player/monkey/monkey.png" id="2_1xxcy"]
+[ext_resource type="Script" uid="uid://ca4ihn4jasw5t" path="res://hurtbox/hurtbox.gd" id="3_1xxcy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1xxcy"]
+size = Vector2(104, 188.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t27ns"]
+size = Vector2(104, 188.75)
+
+[node name="EnemyStone" type="CharacterBody2D" unique_id=1404550148]
+script = ExtResource("1_ygd4e")
+metadata/_custom_type_script = "uid://c41r12fxe2txp"
+
+[node name="Node2D" type="Node2D" parent="." unique_id=676439360]
+
+[node name="Player" type="Sprite2D" parent="Node2D" unique_id=804405611]
+position = Vector2(-1.3411045e-06, -22.000004)
+scale = Vector2(1.762712, 2.2117643)
+texture = ExtResource("2_1xxcy")
+region_enabled = true
+region_rect = Rect2(159, 135, 59, 85)
+
+[node name="Hurtbox" type="Area2D" parent="Node2D" unique_id=1672676062]
+unique_name_in_owner = true
+collision_layer = 64
+collision_mask = 0
+monitoring = false
+script = ExtResource("3_1xxcy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Hurtbox" unique_id=252264775]
+position = Vector2(0, -22.25)
+shape = SubResource("RectangleShape2D_1xxcy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=19682800]
+position = Vector2(0, -22)
+shape = SubResource("RectangleShape2D_t27ns")
+
+[connection signal="get_damage" from="Node2D/Hurtbox" to="." method="_on_hurtbox_get_damage"]

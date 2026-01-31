@@ -1,0 +1,5 @@
+res://ui/pass/pass.tscn
+res://ui/pass/pass.gd
+res://level/level.gd
+res://level/level_1/level_1.tscn
+res://util/global.gd

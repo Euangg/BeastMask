@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://d2lslivf0podk"]
+
+[ext_resource type="Script" uid="uid://c41r12fxe2txp" path="res://enemy/enemy.gd" id="1_vc4p4"]
+[ext_resource type="Texture2D" uid="uid://cpju3rhuvnu6d" path="res://player/monkey/monkey.png" id="2_3kdyx"]
+[ext_resource type="Script" uid="uid://d4ipkk1w7rjan" path="res://hitbox/hitbox_enter.gd" id="3_3kdyx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wdldj"]
+size = Vector2(90, 195.5)
+
+[node name="Enemy1" type="CharacterBody2D" unique_id=134206789]
+script = ExtResource("1_vc4p4")
+metadata/_custom_type_script = "uid://c41r12fxe2txp"
+
+[node name="Graphic" type="Node2D" parent="." unique_id=1980283327]
+unique_name_in_owner = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Graphic" unique_id=60547864]
+position = Vector2(-0.25, -50.49999)
+scale = Vector2(1.2971015, 2.4375)
+texture = ExtResource("2_3kdyx")
+region_enabled = true
+region_rect = Rect2(381, 144, 69, 80)
+
+[node name="Hitbox" type="Area2D" parent="Graphic" unique_id=2133024954]
+collision_layer = 32
+collision_mask = 16
+script = ExtResource("3_3kdyx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Graphic/Hitbox" unique_id=1261871363]
+position = Vector2(0, -51)
+shape = SubResource("RectangleShape2D_wdldj")

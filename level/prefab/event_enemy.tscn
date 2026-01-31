@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://0w48jlqovaqf"]
+
+[node name="EventEnemy" type="Area2D" unique_id=1477731791]
+
+[node name="Node" type="Node" parent="." unique_id=636652393]

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://82bor0jg8kki"]
+
+[ext_resource type="Script" uid="uid://ur1tkfqgx6h6" path="res://level/prefab/point_enemy.gd" id="1_2lii4"]
+
+[node name="PointEnemy" type="Marker2D" unique_id=1907315958]
+script = ExtResource("1_2lii4")

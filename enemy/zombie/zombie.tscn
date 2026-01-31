@@ -1,0 +1,146 @@
+[gd_scene format=3 uid="uid://cnrd6ves3ilva"]
+
+[ext_resource type="Script" uid="uid://du2wmnffu0cce" path="res://enemy/zombie/zombie.gd" id="1_fo461"]
+[ext_resource type="Texture2D" uid="uid://cpju3rhuvnu6d" path="res://player/monkey/monkey.png" id="2_32ick"]
+[ext_resource type="Script" uid="uid://d4ipkk1w7rjan" path="res://hitbox/hitbox_enter.gd" id="3_5r16j"]
+[ext_resource type="Script" uid="uid://ca4ihn4jasw5t" path="res://hurtbox/hurtbox.gd" id="4_a85bv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ljwmj"]
+size = Vector2(20, 69)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i2j0x"]
+size = Vector2(38, 78)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6dvuw"]
+size = Vector2(24, 72)
+
+[sub_resource type="Animation" id="Animation_a85bv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphic/Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Graphic/Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_32ick"]
+resource_name = "die"
+length = 0.4
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphic/Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.5, 0.5), Vector2(1.5, 1.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Graphic/Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_6dvuw"]
+resource_name = "idle"
+
+[sub_resource type="Animation" id="Animation_5r16j"]
+resource_name = "walk"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a85bv"]
+_data = {
+&"RESET": SubResource("Animation_a85bv"),
+&"die": SubResource("Animation_32ick"),
+&"idle": SubResource("Animation_6dvuw"),
+&"walk": SubResource("Animation_5r16j")
+}
+
+[node name="Zombie" type="CharacterBody2D" unique_id=982433154]
+collision_layer = 4
+script = ExtResource("1_fo461")
+
+[node name="Graphic" type="Node2D" parent="." unique_id=890723478]
+unique_name_in_owner = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Graphic" unique_id=226926205]
+position = Vector2(0, -40)
+texture = ExtResource("2_32ick")
+region_enabled = true
+region_rect = Rect2(39, 21, 42, 79)
+
+[node name="Hitbox" type="Area2D" parent="Graphic" unique_id=1479179579]
+collision_layer = 32
+collision_mask = 16
+script = ExtResource("3_5r16j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Graphic/Hitbox" unique_id=1604968182]
+position = Vector2(0, -35.5)
+shape = SubResource("RectangleShape2D_ljwmj")
+
+[node name="Hurtbox" type="Area2D" parent="Graphic" unique_id=1492377777]
+unique_name_in_owner = true
+collision_layer = 64
+collision_mask = 0
+monitoring = false
+script = ExtResource("4_a85bv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Graphic/Hurtbox" unique_id=80999187]
+position = Vector2(0, -39)
+shape = SubResource("RectangleShape2D_i2j0x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1399878688]
+position = Vector2(0, -37)
+shape = SubResource("RectangleShape2D_6dvuw")
+
+[node name="Timer" type="Timer" parent="." unique_id=462172906]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=999817442]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_a85bv")
+
+[connection signal="get_damage" from="Graphic/Hurtbox" to="." method="_on_hurtbox_get_damage"]

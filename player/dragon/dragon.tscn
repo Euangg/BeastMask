@@ -1,0 +1,202 @@
+[gd_scene format=3 uid="uid://c373u7op7kppl"]
+
+[ext_resource type="Script" uid="uid://c025sndyftq7s" path="res://player/dragon/dragon.gd" id="1_lffmg"]
+[ext_resource type="Texture2D" uid="uid://nwf4ar2sv454" path="res://player/dragon/dragon.png" id="2_k52lb"]
+[ext_resource type="Script" uid="uid://ca4ihn4jasw5t" path="res://hurtbox/hurtbox.gd" id="3_4sm1p"]
+[ext_resource type="Script" uid="uid://b5nu2xryxfo4m" path="res://hitbox/hitbox_oneshot.gd" id="4_df1am"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_df1am"]
+size = Vector2(41, 54)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r52a3"]
+size = Vector2(208, 112)
+
+[sub_resource type="Gradient" id="Gradient_df1am"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_r52a3"]
+gradient = SubResource("Gradient_df1am")
+width = 16
+height = 16
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_uyod0"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(104.32, 56.865, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = -223.2
+angle_max = 194.40001
+initial_velocity_max = 190.79
+gravity = Vector3(0, 98, 0)
+scale_min = 0.099999994
+scale_max = 0.5
+
+[sub_resource type="Animation" id="Animation_k52lb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphic/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Graphic:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_df1am"]
+resource_name = "atk"
+length = 0.4
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphic/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_uyod0"]
+resource_name = "die"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphic:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_r52a3"]
+resource_name = "hurt"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphic/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+
+[sub_resource type="Animation" id="Animation_4sm1p"]
+resource_name = "idle"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphic/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_df1am"]
+_data = {
+&"RESET": SubResource("Animation_k52lb"),
+&"atk": SubResource("Animation_df1am"),
+&"die": SubResource("Animation_uyod0"),
+&"hurt": SubResource("Animation_r52a3"),
+&"idle": SubResource("Animation_4sm1p")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k52lb"]
+size = Vector2(48, 62)
+
+[node name="PlayerDragon" type="CharacterBody2D" unique_id=1011910614]
+script = ExtResource("1_lffmg")
+metadata/_custom_type_script = "uid://uqs7igyk07yo"
+
+[node name="Graphic" type="Node2D" parent="." unique_id=175146206]
+unique_name_in_owner = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Graphic" unique_id=1340888561]
+texture = ExtResource("2_k52lb")
+hframes = 4
+vframes = 2
+
+[node name="Hurtbox" type="Area2D" parent="Graphic" unique_id=96723584]
+unique_name_in_owner = true
+collision_layer = 16
+collision_mask = 32
+script = ExtResource("3_4sm1p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Graphic/Hurtbox" unique_id=1455025099]
+shape = SubResource("RectangleShape2D_df1am")
+
+[node name="Hitbox" type="Area2D" parent="Graphic" unique_id=1525404793]
+unique_name_in_owner = true
+collision_layer = 8
+collision_mask = 64
+monitoring = false
+monitorable = false
+script = ExtResource("4_df1am")
+damage = 40.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Graphic/Hitbox" unique_id=147863936]
+shape = SubResource("RectangleShape2D_r52a3")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Graphic" unique_id=1879174733]
+unique_name_in_owner = true
+emitting = false
+amount = 300
+texture = SubResource("GradientTexture2D_r52a3")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_uyod0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=598069220]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_df1am")
+autoplay = &"die"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=192573169]
+visible = false
+shape = SubResource("RectangleShape2D_k52lb")
+
+[node name="TimerInvincible" type="Timer" parent="." unique_id=2043413609]
+unique_name_in_owner = true
+wait_time = 0.5
+one_shot = true
+
+[connection signal="get_damage" from="Graphic/Hurtbox" to="." method="_on_hurtbox_get_damage"]
+[connection signal="timeout" from="TimerInvincible" to="." method="_on_timer_invincible_timeout"]

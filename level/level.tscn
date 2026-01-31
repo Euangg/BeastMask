@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://f6yjjjckgan3"]
+
+[ext_resource type="Script" uid="uid://b41n5g440qde1" path="res://level/level.gd" id="1_7lnir"]
+
+[node name="Level" type="Node2D" unique_id=2042567388]
+script = ExtResource("1_7lnir")
+
+[node name="NodeEnterPoint" type="Node" parent="." unique_id=1359246733]
+
+[node name="NodeCameraRange" type="Node" parent="." unique_id=1095783540]
+
+[node name="LT" type="Marker2D" parent="NodeCameraRange" unique_id=295866065]
+
+[node name="RB" type="Marker2D" parent="NodeCameraRange" unique_id=1855086809]

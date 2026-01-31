@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://c3u14vbsppxaa"]
+
+[ext_resource type="Script" uid="uid://drkic68uysqbe" path="res://test.gd" id="1_g14j6"]
+[ext_resource type="PackedScene" uid="uid://ciar6x6412wcf" path="res://enemy/enemy_stone/enemy_stone.tscn" id="2_8uh7m"]
+[ext_resource type="PackedScene" uid="uid://d2lslivf0podk" path="res://enemy/enemy_1/enemy_1.tscn" id="3_6uqi0"]
+[ext_resource type="PackedScene" uid="uid://c373u7op7kppl" path="res://player/dragon/dragon.tscn" id="3_ppyta"]
+[ext_resource type="PackedScene" uid="uid://qsbc2kitpjnm" path="res://player/bear/bear.tscn" id="4_ppyta"]
+[ext_resource type="PackedScene" uid="uid://cnrd6ves3ilva" path="res://enemy/zombie/zombie.tscn" id="5_ykrsh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_37kl0"]
+size = Vector2(1956, 135)
+
+[node name="Test" type="Node2D" unique_id=135950904]
+script = ExtResource("1_g14j6")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=196253245]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=2133293879]
+position = Vector2(521, 413)
+shape = SubResource("RectangleShape2D_37kl0")
+
+[node name="Graphic" type="Node2D" parent="." unique_id=9687436]
+
+[node name="EnemyStone" parent="." unique_id=1404550148 instance=ExtResource("2_8uh7m")]
+position = Vector2(365, 241)
+
+[node name="Enemy1" parent="." unique_id=134206789 instance=ExtResource("3_6uqi0")]
+position = Vector2(615, 279)
+
+[node name="PlayerDragon" parent="." unique_id=1011910614 instance=ExtResource("3_ppyta")]
+position = Vector2(140, 126)
+
+[node name="Bear" parent="." unique_id=308110839 instance=ExtResource("4_ppyta")]
+unique_name_in_owner = true
+position = Vector2(180, 318)
+
+[node name="Zombie" parent="." unique_id=982433154 instance=ExtResource("5_ykrsh")]
+position = Vector2(490, 321)

@@ -1,0 +1,229 @@
+[gd_scene format=3 uid="uid://6bb6evdb8488"]
+
+[ext_resource type="Script" uid="uid://durwbya1bbgkr" path="res://player/monkey/monkey.gd" id="1_o582p"]
+[ext_resource type="Texture2D" uid="uid://cpju3rhuvnu6d" path="res://player/monkey/monkey.png" id="2_ed10k"]
+[ext_resource type="Script" uid="uid://b5nu2xryxfo4m" path="res://hitbox/hitbox_oneshot.gd" id="3_mc37p"]
+[ext_resource type="Script" uid="uid://ca4ihn4jasw5t" path="res://hurtbox/hurtbox.gd" id="4_ed10k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o582p"]
+size = Vector2(32.875, 45)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mc37p"]
+size = Vector2(20, 76)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_elce3"]
+size = Vector2(26, 79.5)
+
+[sub_resource type="Animation" id="Animation_m2xkb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphic/Player:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Graphic:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_o582p"]
+resource_name = "atk"
+length = 0.15
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphic/Player:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [20]
+}
+
+[sub_resource type="Animation" id="Animation_3x0x8"]
+resource_name = "die"
+length = 0.4
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphic:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_mc37p"]
+resource_name = "fall"
+length = 0.1
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphic/Player:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [15]
+}
+
+[sub_resource type="Animation" id="Animation_0m1qi"]
+resource_name = "hurt"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphic/Player:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+
+[sub_resource type="Animation" id="Animation_ed10k"]
+resource_name = "idle"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphic/Player:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_oo5da"]
+resource_name = "rise"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphic/Player:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+
+[sub_resource type="Animation" id="Animation_br3bc"]
+resource_name = "run"
+length = 0.5
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphic/Player:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [5, 6, 7, 8, 9]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m2xkb"]
+_data = {
+&"RESET": SubResource("Animation_m2xkb"),
+&"atk": SubResource("Animation_o582p"),
+&"die": SubResource("Animation_3x0x8"),
+&"fall": SubResource("Animation_mc37p"),
+&"hurt": SubResource("Animation_0m1qi"),
+&"idle": SubResource("Animation_ed10k"),
+&"rise": SubResource("Animation_oo5da"),
+&"run": SubResource("Animation_br3bc")
+}
+
+[node name="PlayerO" type="CharacterBody2D" unique_id=308110839]
+collision_layer = 2
+script = ExtResource("1_o582p")
+
+[node name="Graphic" type="Node2D" parent="." unique_id=1949678870]
+unique_name_in_owner = true
+
+[node name="Player" type="Sprite2D" parent="Graphic" unique_id=2073678715]
+position = Vector2(0, -40)
+texture = ExtResource("2_ed10k")
+hframes = 5
+vframes = 5
+
+[node name="Hitbox" type="Area2D" parent="Graphic" unique_id=952348204]
+unique_name_in_owner = true
+collision_layer = 8
+collision_mask = 64
+monitoring = false
+monitorable = false
+script = ExtResource("3_mc37p")
+damage = 40.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Graphic/Hitbox" unique_id=199489792]
+position = Vector2(28.5625, -43.5)
+shape = SubResource("RectangleShape2D_o582p")
+
+[node name="Hurtbox" type="Area2D" parent="Graphic" unique_id=1265264648]
+unique_name_in_owner = true
+collision_layer = 16
+collision_mask = 32
+script = ExtResource("4_ed10k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Graphic/Hurtbox" unique_id=1375015080]
+position = Vector2(0, -39)
+shape = SubResource("RectangleShape2D_mc37p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1403986926]
+position = Vector2(0, -40.25)
+shape = SubResource("RectangleShape2D_elce3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=146775931]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_m2xkb")
+autoplay = &"idle"
+
+[node name="TimerInvincible" type="Timer" parent="." unique_id=1209449918]
+unique_name_in_owner = true
+wait_time = 0.5
+one_shot = true
+
+[connection signal="get_damage" from="Graphic/Hurtbox" to="." method="_on_hurtbox_get_damage"]
+[connection signal="timeout" from="TimerInvincible" to="." method="_on_timer_invincible_timeout"]

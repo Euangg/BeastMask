@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://bmqikbyoogitf"]
+
+[ext_resource type="Script" uid="uid://b1xhhquywwuaa" path="res://ui/play/play.gd" id="1_maavd"]
+[ext_resource type="PackedScene" uid="uid://6bb6evdb8488" path="res://player/monkey/monkey.tscn" id="2_j5ts6"]
+
+[node name="Play" type="Control" unique_id=805729783]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_maavd")
+
+[node name="Node2DLevel" type="Node2D" parent="." unique_id=2052478522]
+unique_name_in_owner = true
+
+[node name="Node2DPlayer" type="Node2D" parent="." unique_id=1569051591]
+unique_name_in_owner = true
+
+[node name="Player" parent="Node2DPlayer" unique_id=308110839 instance=ExtResource("2_j5ts6")]
+unique_name_in_owner = true
+position = Vector2(101, 350)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=994435256]
+unique_name_in_owner = true
