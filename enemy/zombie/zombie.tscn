@@ -6,13 +6,13 @@
 [ext_resource type="Script" uid="uid://ca4ihn4jasw5t" path="res://hurtbox/hurtbox.gd" id="4_a85bv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ljwmj"]
-size = Vector2(32, 48)
+size = Vector2(32, 80)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i2j0x"]
-size = Vector2(38, 50)
+size = Vector2(38, 83)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6dvuw"]
-size = Vector2(30, 46)
+size = Vector2(30, 78)
 
 [sub_resource type="Animation" id="Animation_a85bv"]
 length = 0.001
@@ -185,7 +185,7 @@ collision_mask = 16
 script = ExtResource("3_5r16j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Graphic/Hitbox" unique_id=1604968182]
-position = Vector2(0, -25)
+position = Vector2(0, -41)
 shape = SubResource("RectangleShape2D_ljwmj")
 
 [node name="Hurtbox" type="Area2D" parent="Graphic" unique_id=1492377777]
@@ -196,11 +196,11 @@ monitoring = false
 script = ExtResource("4_a85bv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Graphic/Hurtbox" unique_id=80999187]
-position = Vector2(0, -25)
+position = Vector2(0, -41.5)
 shape = SubResource("RectangleShape2D_i2j0x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1399878688]
-position = Vector2(0, -24)
+position = Vector2(0, -40)
 shape = SubResource("RectangleShape2D_6dvuw")
 
 [node name="Timer" type="Timer" parent="." unique_id=462172906]
