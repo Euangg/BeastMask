@@ -50,5 +50,7 @@ var pack_enemy:Array=[
 	preload("uid://bm06fg7pyxd74")
 ]
 
+const EFFECT_NUMBER = preload("uid://6336lccsqp06")
+
 var player:Entity=null
 var node_enemy:Node=null

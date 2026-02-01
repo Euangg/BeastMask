@@ -1,15 +1,14 @@
+AnimationPlayer
+Label
 TextureRect
 ColorRect
 CanvasLayer
 CollisionShape2D
 Area2D
 TextureProgressBar
-AnimationPlayer
 Sprite2D
 Node2D
 CharacterBody2D
-Label
 Marker2D
 Node
 Timer
-AudioStreamPlayer

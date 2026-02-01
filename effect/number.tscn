@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://6336lccsqp06"]
+
+[ext_resource type="Script" uid="uid://ccq2b65dmpqk2" path="res://effect/number.gd" id="1_3jrbv"]
+
+[sub_resource type="Animation" id="Animation_3jrbv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_lr28m"]
+resource_name = "enter"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.5, 0.5), Vector2(1.1, 1.1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0hcrp"]
+_data = {
+&"RESET": SubResource("Animation_3jrbv"),
+&"enter": SubResource("Animation_lr28m")
+}
+
+[node name="Number" type="Node2D" unique_id=175734102]
+script = ExtResource("1_3jrbv")
+
+[node name="Label" type="Label" parent="." unique_id=563385287]
+unique_name_in_owner = true
+offset_left = -19.0
+offset_top = -8.0
+offset_right = 21.0
+offset_bottom = 10.0
+pivot_offset = Vector2(19, 8)
+text = "999"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1210144642]
+libraries/ = SubResource("AnimationLibrary_0hcrp")
+autoplay = &"enter"

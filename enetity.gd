@@ -17,5 +17,10 @@ var direction_hurt:Direction
 
 @export var hp:float=100
 
-
 func sig_dead():dead.emit()
+
+func effect_num(value):
+	var n=Global.EFFECT_NUMBER.instantiate()
+	n.value=value
+	n.position=position
+	add_sibling(n)

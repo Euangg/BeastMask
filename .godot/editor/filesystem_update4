@@ -37,3 +37,9 @@ res://level/prefab/point_enemy.tscn
 res://enemy/clawn_common/clawn_common.tscn
 res://hitbox/hitbox_always.gd
 res://ui/play/crt.gdshader
+res://effect/number.tscn
+res://effect/number.gd
+res://enetity.gd
+res://enemy/enemy_1/enemy_1.tscn
+res://enemy/environment/env.gd
+res://enemy/zombie/zombie.gd

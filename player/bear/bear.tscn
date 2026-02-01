@@ -19,7 +19,7 @@ size = Vector2(44, 60)
 
 [sub_resource type="Gradient" id="Gradient_kasil"]
 offsets = PackedFloat32Array(0, 0.60677963, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.21694915, 0.21694915, 0.21694915, 1, 1, 1, 1, 1)
+colors = PackedColorArray(0.59607846, 0, 1, 1, 0.72156864, 0.21568628, 0.49411765, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_4rdsq"]
 gradient = SubResource("Gradient_kasil")

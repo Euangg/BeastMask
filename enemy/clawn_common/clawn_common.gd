@@ -14,6 +14,7 @@ func _physics_process(delta: float) -> void:
 			if is_hurted:
 				is_hurted=false
 				hp-=%Hurtbox.damage
+				effect_num(%Hurtbox.damage)
 				if hp<=70:%AnimationPlayer.play("danger")
 				%Hurtbox.damage=0
 				%AnimationPlayer2.play("hurt")

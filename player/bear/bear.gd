@@ -133,12 +133,12 @@ func judge_state_try_enter_hurt(state:State)->State:
 		state=State.HURT
 		hp-=%Hurtbox.damage
 		print(hp)
+		effect_num(%Hurtbox.damage)
 		Global.play_sfx(Global.SFX_PLAYER_HURT)
 	is_hurted=false
 	%Hurtbox.damage=0
 	return state
 
 func _on_timer_invincible_timeout() -> void:%Graphic.modulate.a=1
-
 
 func _on_audio_stream_player_finished() -> void:%AudioStreamPlayer.play()
