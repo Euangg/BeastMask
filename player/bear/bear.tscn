@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://d4ipkk1w7rjan" path="res://hitbox/hitbox_enter.gd" id="3_kasil"]
 [ext_resource type="Script" uid="uid://ca4ihn4jasw5t" path="res://hurtbox/hurtbox.gd" id="4_e4bqr"]
 [ext_resource type="AudioStream" uid="uid://1i38r234kdns" path="res://sound/sfx/walk.wav" id="6_4rdsq"]
+[ext_resource type="PackedScene" uid="uid://panvqge5rrqk" path="res://hud/hp.tscn" id="7_nxgqn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oahmb"]
 size = Vector2(110, 110)
@@ -362,6 +363,9 @@ text = "AD移动 空格跳跃
 鼠标左键：霹天雳地
 鼠标右键：雷霆咆哮"
 vertical_alignment = 2
+
+[node name="Hp" parent="CanvasLayer" unique_id=1615624164 instance=ExtResource("7_nxgqn")]
+scale = Vector2(3, 3)
 
 [connection signal="get_damage" from="Graphic/Hurtbox" to="." method="_on_hurtbox_get_damage"]
 [connection signal="timeout" from="TimerInvincible" to="." method="_on_timer_invincible_timeout"]

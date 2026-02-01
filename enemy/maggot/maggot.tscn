@@ -163,7 +163,7 @@ _data = {
 [node name="Maggot" type="CharacterBody2D" unique_id=982433154]
 collision_layer = 4
 script = ExtResource("1_sndct")
-hp = 4.0
+hp = 20.0
 
 [node name="Graphic" type="Node2D" parent="." unique_id=890723478]
 unique_name_in_owner = true

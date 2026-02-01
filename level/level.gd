@@ -30,6 +30,11 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	boss.dead.connect(level_pass)
 	Global.node_enemy.call_deferred("add_child",boss)
 	
+	var node_level=get_parent()
+	if node_level:
+		var ui_play=node_level.get_parent()
+		if ui_play:ui_play.filiter()
+	
 
 func level_pass():Global.switch_scene(Global.UI_PASS)
 func level_fail():Global.switch_scene(Global.UI_FAIL)

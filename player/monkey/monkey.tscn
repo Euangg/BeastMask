@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://b5nu2xryxfo4m" path="res://hitbox/hitbox_oneshot.gd" id="3_mc37p"]
 [ext_resource type="Script" uid="uid://ca4ihn4jasw5t" path="res://hurtbox/hurtbox.gd" id="4_ed10k"]
 [ext_resource type="AudioStream" uid="uid://1i38r234kdns" path="res://sound/sfx/walk.wav" id="5_c04fb"]
+[ext_resource type="PackedScene" uid="uid://panvqge5rrqk" path="res://hud/hp.tscn" id="6_u23ni"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o582p"]
 size = Vector2(32.875, 45)
@@ -257,6 +258,9 @@ text = "AD移动 空格跳跃
 鼠标左键/右键：鄙夷一击
 伤害不高，侮辱性极强"
 vertical_alignment = 2
+
+[node name="Hp" parent="CanvasLayer" unique_id=1615624164 instance=ExtResource("6_u23ni")]
+scale = Vector2(3, 3)
 
 [connection signal="get_damage" from="Graphic/Hurtbox" to="." method="_on_hurtbox_get_damage"]
 [connection signal="timeout" from="TimerInvincible" to="." method="_on_timer_invincible_timeout"]

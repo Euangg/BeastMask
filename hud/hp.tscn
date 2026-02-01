@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://panvqge5rrqk"]
+
+[ext_resource type="Script" uid="uid://dbe7vduo6kou0" path="res://hud/hp.gd" id="1_7pexg"]
+[ext_resource type="Texture2D" uid="uid://dgtpqopcrvswt" path="res://hud/hud.png" id="1_a0sn8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7pexg"]
+atlas = ExtResource("1_a0sn8")
+region = Rect2(307, 6, 58, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_brvha"]
+atlas = ExtResource("1_a0sn8")
+region = Rect2(308, 71, 56, 2)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a0sn8"]
+atlas = ExtResource("1_a0sn8")
+region = Rect2(308, 103, 56, 2)
+
+[node name="Hp" type="Control" unique_id=1615624164]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7pexg")
+
+[node name="TextureProgressBarBack" type="TextureProgressBar" parent="." unique_id=1267653636]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+step = 0.01
+value = 54.72
+texture_under = SubResource("AtlasTexture_7pexg")
+texture_progress = SubResource("AtlasTexture_brvha")
+texture_progress_offset = Vector2(1, 1)
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="TextureProgressBarBack" unique_id=1941373370]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+step = 0.01
+value = 22.14
+texture_progress = SubResource("AtlasTexture_a0sn8")
+texture_progress_offset = Vector2(1, 1)

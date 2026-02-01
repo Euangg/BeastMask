@@ -10,12 +10,14 @@ var target_dir:float=0
 
 func _physics_process(delta: float) -> void:
 	if battle_mode:
-		if is_hurted:
-			is_hurted=false
-			hp-=%Hurtbox.damage
-			%Hurtbox.damage=0
-			%AnimationPlayer2.play("hurt")
-			print(hp)
+		if current_state!=State.DIE:
+			if is_hurted:
+				is_hurted=false
+				hp-=%Hurtbox.damage
+				if hp<=70:%AnimationPlayer.play("danger")
+				%Hurtbox.damage=0
+				%AnimationPlayer2.play("hurt")
+				print(hp)
 		#1/3.状态判断
 		var next_state=current_state
 		if hp<=0:next_state=State.DIE
@@ -51,7 +53,7 @@ func _physics_process(delta: float) -> void:
 		#3/3.状态运行
 		match current_state:
 			State.MOVE:
-				target_position=target.position+700*Vector2.from_angle(target_dir)
+				target_position=target.position+600*Vector2.from_angle(target_dir)
 				velocity=(target_position-position).normalized()*300
 				move_and_slide()
 			State.ATTACK:

@@ -30,3 +30,10 @@ res://enemy/pitahaya/pitahaya.tscn
 res://enemy/pitahaya/pitahaya.gd
 res://enemy/maggot/maggot.tscn
 res://enemy/maggot/maggot.gd
+res://enemy/clawn_common/clawn_common.gd
+res://hud/hp.tscn
+res://hud/hp.gd
+res://level/prefab/point_enemy.tscn
+res://enemy/clawn_common/clawn_common.tscn
+res://hitbox/hitbox_always.gd
+res://ui/play/crt.gdshader

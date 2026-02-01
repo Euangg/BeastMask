@@ -38,12 +38,16 @@ func play_sfx_packed(sfx:PackedScene):%Sfx.add_child(sfx.instantiate())
 enum EnumEnemy{
 	STONE,
 	ATTACKER,
-	ZOMBIE
+	ZOMBIE,
+	BIRD,
+	MAGGOT
 }
 var pack_enemy:Array=[
 	preload("uid://ciar6x6412wcf"),
 	preload("uid://d2lslivf0podk"),
-	preload("uid://cnrd6ves3ilva")
+	preload("uid://cnrd6ves3ilva"),
+	preload("uid://bx6o6wkubqudr"),
+	preload("uid://bm06fg7pyxd74")
 ]
 
 var player:Entity=null

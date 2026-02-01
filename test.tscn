@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://82bor0jg8kki" path="res://level/prefab/point_enemy.tscn" id="7_vbegm"]
 [ext_resource type="PackedScene" uid="uid://csgs55d48fynu" path="res://enemy/pitahaya/pitahaya.tscn" id="8_ehkex"]
 [ext_resource type="PackedScene" uid="uid://bm06fg7pyxd74" path="res://enemy/maggot/maggot.tscn" id="9_xersf"]
+[ext_resource type="PackedScene" uid="uid://qsbc2kitpjnm" path="res://player/bear/bear.tscn" id="10_00tp4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_37kl0"]
 size = Vector2(1956, 135)
@@ -81,5 +82,8 @@ position = Vector2(326, 346)
 
 [node name="Maggot" parent="." unique_id=1035656594 instance=ExtResource("9_xersf")]
 position = Vector2(777, 242)
+
+[node name="Bear" parent="." unique_id=859352761 instance=ExtResource("10_00tp4")]
+position = Vector2(80, 305)
 
 [editable path="EventEnemy"]

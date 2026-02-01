@@ -58,7 +58,10 @@ func _physics_process(delta: float) -> void:
 				a.velocity.x=direction*900
 				add_sibling(a)
 				Global.play_sfx(SFX_DRAGON_ATK_2)
-			State.HURT:%AnimationPlayer.play("hurt")
+			State.HURT:
+				%AnimationPlayer.play("hurt")
+				%TimerInvincible.start()
+				%Graphic.modulate.a=0.5
 			State.DIE:
 				%AnimationPlayer.play("die")
 				Global.play_sfx(Global.SFX_PLAYER_DEAD)

@@ -2,6 +2,32 @@
 
 [ext_resource type="Script" uid="uid://b1xhhquywwuaa" path="res://ui/play/play.gd" id="1_maavd"]
 [ext_resource type="PackedScene" uid="uid://6bb6evdb8488" path="res://player/monkey/monkey.tscn" id="2_j5ts6"]
+[ext_resource type="Shader" uid="uid://coa3l26c28y7v" path="res://ui/play/crt.gdshader" id="3_xyo1v"]
+[ext_resource type="Texture2D" uid="uid://brw75fd3vycl7" path="res://ui/play/frame_filter.png" id="4_tnm53"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tnm53"]
+shader = ExtResource("3_xyo1v")
+shader_parameter/overlay = false
+shader_parameter/scanlines_opacity = 0.4
+shader_parameter/scanlines_width = 0.25
+shader_parameter/grille_opacity = 0.3
+shader_parameter/resolution = Vector2(400, 225)
+shader_parameter/pixelate = false
+shader_parameter/roll = false
+shader_parameter/roll_speed = 8.0
+shader_parameter/roll_size = 0.0
+shader_parameter/roll_variation = 1.8
+shader_parameter/distort_intensity = 0.0
+shader_parameter/noise_opacity = 0.4
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.06
+shader_parameter/aberration = 0.03
+shader_parameter/brightness = 1.4
+shader_parameter/discolor = true
+shader_parameter/warp_amount = 0.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 1.0
 
 [node name="Play" type="Control" unique_id=805729783]
 layout_mode = 3
@@ -24,3 +50,25 @@ position = Vector2(101, 350)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=994435256]
 unique_name_in_owner = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=330787216]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1252485529]
+visible = false
+material = SubResource("ShaderMaterial_tnm53")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=1859977164]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_tnm53")
+expand_mode = 1

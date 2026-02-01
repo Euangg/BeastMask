@@ -54,6 +54,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if player:camera_2d.position=player.position
 
-func _physics_process(delta: float) -> void:pass
+func _physics_process(delta: float) -> void:
+	if Input.is_action_just_pressed("esc"):Global.switch_scene(Global.UI_THEME)
 	
 func game_fail():Global.switch_scene(Global.UI_FAIL)
+
+func filiter():%TextureRect.visible=true
