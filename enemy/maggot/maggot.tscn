@@ -9,7 +9,7 @@
 size = Vector2(158, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i2j0x"]
-size = Vector2(158, 32)
+size = Vector2(158, 55)
 
 [sub_resource type="Animation" id="Animation_a85bv"]
 length = 0.001
@@ -192,6 +192,7 @@ monitoring = false
 script = ExtResource("4_fhv5e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Graphic/Hurtbox" unique_id=80999187]
+position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_i2j0x")
 
 [node name="Timer" type="Timer" parent="." unique_id=462172906]

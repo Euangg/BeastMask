@@ -5,8 +5,11 @@
 [ext_resource type="Script" uid="uid://d4ipkk1w7rjan" path="res://hitbox/hitbox_enter.gd" id="2_jf114"]
 [ext_resource type="Script" uid="uid://ca4ihn4jasw5t" path="res://hurtbox/hurtbox.gd" id="3_pba6f"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oln7i"]
+size = Vector2(57, 38)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pba6f"]
-size = Vector2(62, 39)
+size = Vector2(61, 39)
 
 [sub_resource type="Animation" id="Animation_oln7i"]
 length = 0.001
@@ -102,8 +105,8 @@ collision_mask = 16
 script = ExtResource("2_jf114")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Graphic/Hitbox" unique_id=1877690148]
-position = Vector2(0, -19.5)
-shape = SubResource("RectangleShape2D_pba6f")
+position = Vector2(0.5, -19)
+shape = SubResource("RectangleShape2D_oln7i")
 
 [node name="Hurtbox" type="Area2D" parent="Graphic" unique_id=917965823]
 unique_name_in_owner = true
@@ -112,7 +115,7 @@ collision_mask = 0
 script = ExtResource("3_pba6f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Graphic/Hurtbox" unique_id=898102163]
-position = Vector2(0, -19.5)
+position = Vector2(0.5, -19.5)
 shape = SubResource("RectangleShape2D_pba6f")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=120277729]

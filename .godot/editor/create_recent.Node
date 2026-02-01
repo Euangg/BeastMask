@@ -1,3 +1,4 @@
+Marker2D
 TextureRect
 ColorRect
 CanvasLayer
@@ -9,7 +10,5 @@ Sprite2D
 Node2D
 CharacterBody2D
 Label
-Marker2D
 Node
 Timer
-AudioStreamPlayer
